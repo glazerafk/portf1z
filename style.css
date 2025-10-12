@@ -19,9 +19,23 @@ body {
   padding: 0 20px;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* espaço entre a imagem e o texto */
+  margin-bottom: 1rem;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* deixa a imagem redonda */
+  object-fit: cover;
+  border: 2px solid #1db954;
+}
+
 h1 {
   font-size: 3rem;
-  margin-bottom: 0.5rem;
   color: #1db954; /* Verde vibrante */
 }
 
