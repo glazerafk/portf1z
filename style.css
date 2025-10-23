@@ -1,116 +1,343 @@
-/* Reset and global styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>glazerafk – front-end & back-end developer</title>
 
-body {
-  background-color: #121212;
-  color: #e0e0e0;
-  line-height: 1.6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-  font-size: 16px;
-}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Roboto+Slab:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
 
-.container {
-  max-width: 900px;
-  width: 100%;
-  background-color: #1e1e2f;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-  animation: fadeIn 1.5s ease-out;
-}
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
 
-/* Header styles */
-.header {
-  text-align: center;
-  margin-bottom: 30px;
-}
+    html, body {
+      height: 100%;
+      background: #0f2027; /* fallback */
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Open Sans', sans-serif;
+      overflow-x: hidden;
+      color: #eee;
+    }
 
-.profile-pic {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 3px solid #6f42c1;
-  margin-bottom: 15px;
-  object-fit: cover;
-}
+    #particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-h1 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  font-size: 2.5rem;
-  color: #bb86fc;
-  margin-bottom: 10px;
-}
+    main.container {
+      position: relative;
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 3rem 4rem;
+      background: rgba(20, 30, 40, 0.85);
+      border-radius: 15px;
+      box-shadow: 0 0 40px rgba(83, 192, 249, 0.4);
+      backdrop-filter: blur(12px);
+      z-index: 1;
+      animation: fadeInUp 1.4s ease forwards;
+    }
 
-.highlight {
-  color: #03dac6;
-}
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-.tagline {
-  font-weight: 400;
-  color: #a9a9a9;
-  margin-bottom: 40px;
-  font-size: 1.1rem;
-}
+    .header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
 
-/* Projects section */
-.projects h2 {
-  font-weight: 600;
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #bb86fc;
-  padding-bottom: 8px;
-}
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #53c0f9;
+      box-shadow: 0 4px 20px rgba(83, 192, 249, 0.7);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      cursor: pointer;
+    }
+    .profile-pic:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 6px 28px rgba(83, 192, 249, 0.9);
+    }
 
-.projects ul {
-  list-style: none;
-  padding-left: 0;
-}
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 3.4rem;
+      margin-top: 1.3rem;
+      background: linear-gradient(90deg, #53c0f9, #1e3c72);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      user-select: none;
+      letter-spacing: 0.06em;
+      filter: drop-shadow(0 0 4px #53c0f9);
+    }
 
-.projects li {
-  padding: 10px 0;
-  border-bottom: 1px solid #33334d;
-  font-weight: 400;
-  font-size: 1.05rem;
-  color: #ddd;
-}
+    h1 .highlight {
+      color: #53c0f9;
+    }
 
-.projects li strong {
-  color: #03dac6;
-}
+    /* Typing effect tagline */
+    .tagline {
+      font-size: 1.4rem;
+      color: #a0b8d6;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      height: 1.8rem;
+      margin: 1.4rem 0 3rem;
+      font-family: 'Roboto Slab', serif;
+      user-select: none;
+      white-space: nowrap;
+      border-right: 2px solid #53c0f9;
+      overflow: hidden;
+      animation: blinkCursor 0.8s steps(40) infinite normal;
+    }
 
-/* Footer styles */
-footer {
-  margin-top: 50px;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #888;
-}
+    @keyframes blinkCursor {
+      0%, 100% { border-color: #53c0f9; }
+      50% { border-color: transparent; }
+    }
 
-footer a {
-  color: #bb86fc;
-  text-decoration: none;
-}
+    /* Projects */
+    section.projects {
+      border-top: 1px solid #34495e;
+      padding-top: 2rem;
+    }
 
-footer a:hover {
-  text-decoration: underline;
-}
+    section.projects h2 {
+      font-family: 'Roboto Slab', serif;
+      font-weight: 700;
+      font-size: 2.4rem;
+      color: #53c0f9;
+      margin-bottom: 2rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      user-select: none;
+    }
 
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+    section.projects ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 1.8rem;
+    }
+
+    section.projects ul li {
+      background: #1f2a38;
+      padding: 1.5rem 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: #dbe9ff;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: default;
+      perspective: 1000px;
+    }
+
+    /* Tilt effect on hover */
+    section.projects ul li:hover {
+      transform: rotateX(8deg) rotateY(-10deg) scale(1.05);
+      box-shadow: 0 12px 30px rgba(83, 192, 249, 0.75);
+      color: #53c0f9;
+    }
+
+    section.projects strong {
+      color: #1abc9c;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 3.5rem;
+      text-align: center;
+      font-size: 1rem;
+      color: #7f8c8d;
+      user-select: none;
+      letter-spacing: 0.04em;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    footer a {
+      color: #53c0f9;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #1abc9c;
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      main.container {
+        padding: 2rem 2.5rem;
+      }
+
+      h1 {
+        font-size: 2.6rem;
+      }
+
+      section.projects h2 {
+        font-size: 1.8rem;
+      }
+
+      section.projects ul {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+
+  <main class="container" aria-label="Main content">
+    <header class="header">
+      <img src="ez.png" alt="profile picture of glazerafk" class="profile-pic" />
+      <h1>hey, i'm <span class="highlight">glazerafk</span></h1>
+    </header>
+
+    <p class="tagline" aria-live="polite" aria-atomic="true"></p>
+
+    <section class="projects" aria-label="projects section">
+      <h2>projects</h2>
+      <ul>
+        <li><strong>ultrablox</strong> – a fast-paced ultrakill-inspired shooter on roblox.</li>
+        <li><strong>steak games</strong> – game developed for the youtuber/streamer steak.</li>
+        <li><strong>unwin</strong> – script for unbloating windows via ps2exe.</li>
+        <li><strong>rsh</strong> – ruby shell for linux.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>contact: <a href="mailto:pedrolucaslindor@gmail.com">pedrolucaslindor@gmail.com</a> | discord: @idkimeanitskalr</p>
+      <p>© 2025 glazerafk</p>
+    </footer>
+  </main>
+
+  <script>
+    // Typing effect for tagline
+    const taglineElement = document.querySelector('.tagline');
+    const taglineText = "front-end & back-end developer for roblox & games";
+    let index = 0;
+
+    function typeTagline() {
+      if(index <= taglineText.length) {
+        taglineElement.textContent = taglineText.slice(0, index);
+        index++;
+        setTimeout(typeTagline, 80);
+      } else {
+        // Remove cursor after typing
+        taglineElement.style.borderRight = 'none';
+      }
+    }
+    typeTagline();
+
+    // Particle background (canvas)
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particlesArray;
+
+    function initCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+
+      particlesArray = [];
+      const numberOfParticles = Math.floor((width * height) / 12000);
+
+      for (let i = 0; i < numberOfParticles; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 0.7;
+        this.speedY = (Math.random() - 0.5) * 0.7;
+        this.color = 'rgba(83, 192, 249, 0.7)';
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if(this.x > width) this.x = 0;
+        if(this.x < 0) this.x = width;
+        if(this.y > height) this.y = 0;
+        if(this.y < 0) this.y = height;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.fillStyle = this.color;
+        ctx.shadowColor = '#53c0f9';
+        ctx.shadowBlur = 5;
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+      particlesArray.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+
+      connectParticles();
+      requestAnimationFrame(animateParticles);
+    }
+
+    function connectParticles() {
+      let maxDistance = 120;
+      for(let a = 0; a < particlesArray.length; a++) {
+        for(let b = a + 1; b < particlesArray.length; b++) {
+          let dx = particlesArray[a].x - particlesArray[b].x;
+          let dy = particlesArray[a].y - particlesArray[b].y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          if(distance < maxDistance) {
+            ctx.strokeStyle = `rgba(83, 192, 249, ${1 - distance / maxDistance})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    window.addEventListener('resize', () => {
+      initCanvas();
+    });
+
+    initCanvas();
+    animateParticles();
+
+  </script>
+</body>
+</html>
